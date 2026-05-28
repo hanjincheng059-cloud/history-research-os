@@ -449,6 +449,10 @@ python scripts/search_arxiv.py --top-n 15
 
 如果你觉得这个项目对你有帮助，请给个 Star ⭐️ 支持一下！
 
+## 中转站
+
+打个广告，我们做的api中转站，支持主流热门模型，体验丝滑，价格透明，欢迎使用：https://infistar.ai/register?aff=DFYUNUY5&ref_source=link
+
 ## 许可证
 
 MIT License
