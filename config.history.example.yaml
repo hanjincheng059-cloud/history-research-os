@@ -1,0 +1,70 @@
+# History / Humanities Research Configuration Example
+# Copy this file to config.yaml and customize it for your own project.
+
+language: zh
+vault_path: "/path/to/your/obsidian-vault"
+papers_dir: "20_Research/Papers"
+
+research_domains:
+  "清代广州贸易":
+    keywords:
+      - "Qing dynasty trade"
+      - "Canton trade"
+      - "Guangzhou trade"
+      - "十三行"
+      - "Thirteen Hongs"
+      - "粤海关"
+      - "Yuehaiguan"
+      - "hong merchant"
+      - "Canton system"
+      - "single-port trade"
+    arxiv_categories: []
+    semantic_scholar_only: true
+    priority: 5
+
+  "全球物质文化史":
+    keywords:
+      - "material culture history"
+      - "global commodity history"
+      - "materia medica"
+      - "medicinal trade"
+      - "early modern medicine"
+      - "bencao"
+      - "本草"
+      - "global trade"
+    arxiv_categories: []
+    semantic_scholar_only: true
+    priority: 5
+
+  "中西交流与澳门":
+    keywords:
+      - "Sino-Western exchange"
+      - "Macau history"
+      - "Macao"
+      - "Luso-Chinese"
+      - "East India Company"
+      - "Jesuit China"
+      - "missionary China"
+      - "Manila Galleon"
+      - "maritime trade"
+    arxiv_categories: []
+    semantic_scholar_only: true
+    priority: 4
+
+  "数字人文与历史学方法":
+    keywords:
+      - "digital humanities"
+      - "digital history"
+      - "historical GIS"
+      - "text mining history"
+      - "network analysis history"
+      - "digital archives"
+      - "historical database"
+    arxiv_categories: []
+    semantic_scholar_only: true
+    priority: 3
+
+excluded_keywords:
+  - "workshop"
+  - "survey"
+  - "review"

@@ -1,17 +1,24 @@
 # evil-read-arxiv
 
-> Automated paper reading workflow - Search, recommend, analyze and organize research papers
+> AI-native research workflow - search, recommend, analyze, organize, and turn literature into Obsidian knowledge
 
 ## 语言 / Language
 
 - [中文版](README.md)
 - [English Version](README_en.md)
+- [History Research Mode](README.history.md)
 
 ## Introduction
 
-This is a collection of Claude Code Skills for automating research paper search, recommendation, analysis, and organization. By calling arXiv and Semantic Scholar APIs, it recommends high-quality papers daily and automatically generates detailed notes and knowledge graphs.
+This is a collection of Claude Code Skills and a Next.js web app for automating research literature search, recommendation, analysis, and organization. It started as an arXiv/AI paper workflow and now includes a History/Humanities mode for historians who want source discovery, literature triage, Obsidian notes, evidence mapping, and argument building.
 
 ## Features
+
+### 0. History / Humanities Research Mode
+- Includes `config.history.example.yaml` for historical research domains such as Qing/Canton trade, global material culture, Sino-Western exchange, and digital humanities
+- Supports `semantic_scholar_only: true` for non-arXiv humanities domains
+- Encourages humanities-aware note fields: central question, argument, evidence/source base, historiographic position, project relevance, and next action
+- Designed to pair with Obsidian source notes, argument memos, and knowledge graphs
 
 ### 1. start-my-day - Daily Paper Recommendations
 - Search papers from arXiv in the last month
@@ -69,6 +76,17 @@ A standalone Next.js 16 web application for visual paper browsing. See [web/READ
    pip install -r requirements.txt
    ```
 
+## Open Source And Privacy
+
+This repository does not track personal configuration or runtime state by default:
+
+- `config.yaml`: your real research domains, Vault path, and local settings
+- `data/api_settings.json`: API keys and model settings
+- `data/feedback.json` / `data/preferences.json`: your reading feedback and learned preference profile
+- `data/papers_cache/` / `data/analysis_cache/` / `data/paper_images/`: runtime caches
+
+When publishing or contributing, commit templates such as `config.example.yaml`, `config.history.example.yaml`, and `data/api_settings.example.json`, not personal files.
+
 ### Installation Steps
 
 #### Option A: CLI Skills Installation
@@ -104,6 +122,8 @@ npm install
 # 3. Configure research interests (project root)
 cd ..
 cp config.example.yaml config.yaml
+# Or for history/humanities:
+# cp config.history.example.yaml config.yaml
 # Edit config.yaml with your research domains and keywords
 
 # 4. Configure API Key (choose one, in priority order)
@@ -113,7 +133,13 @@ cp config.example.yaml config.yaml
 
 **Option A: `data/api_settings.json` (Recommended)**
 
-Create `data/api_settings.json` at the project root:
+Copy the example file and add your own API key:
+
+```bash
+cp data/api_settings.example.json data/api_settings.json
+```
+
+`data/api_settings.json`:
 
 ```json
 {
@@ -135,11 +161,7 @@ ANTHROPIC_API_KEY=sk-ant-your-key
 ANTHROPIC_BASE_URL=https://api.anthropic.com
 ```
 
-**Option C: Edit source code directly** (not recommended for public repos)
-
-Set `DEFAULT_API_KEY` and `DEFAULT_BASE_URL` constants in `web/src/lib/anthropic.ts`.
-
-> Priority: `data/api_settings.json` > Environment variables > Code defaults
+> Priority: `data/api_settings.json` > environment variables > code defaults. Do not commit your private `data/api_settings.json`.
 
 ```bash
 # 5. Start the Web app

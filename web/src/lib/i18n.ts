@@ -60,10 +60,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Settings page
     "settings.claudeConfig": "Claude 模型配置",
-    "settings.claudeConfigDesc": "已内置默认 API，无需配置即可使用。以下选项仅用于自定义覆盖。",
+    "settings.claudeConfigDesc": "请配置自己的 Anthropic API Key。也可以使用 data/api_settings.json 或环境变量。",
     "settings.modelSelection": "模型选择",
-    "settings.apiKeyLabel": "API Key（留空使用默认）",
-    "settings.apiKeyPlaceholder": "留空使用内置默认 API",
+    "settings.apiKeyLabel": "API Key",
+    "settings.apiKeyPlaceholder": "sk-ant-your-key",
     "settings.researchInterests": "研究兴趣",
     "settings.delete": "删除",
     "settings.priority": "优先级: {value}",
@@ -140,10 +140,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Settings page
     "settings.claudeConfig": "Claude Model Configuration",
-    "settings.claudeConfigDesc": "Built-in default API is ready to use. Options below are for custom overrides only.",
+    "settings.claudeConfigDesc": "Configure your own Anthropic API key, or use data/api_settings.json / environment variables.",
     "settings.modelSelection": "Model",
-    "settings.apiKeyLabel": "API Key (leave empty for default)",
-    "settings.apiKeyPlaceholder": "Leave empty to use built-in default API",
+    "settings.apiKeyLabel": "API Key",
+    "settings.apiKeyPlaceholder": "sk-ant-your-key",
     "settings.researchInterests": "Research Interests",
     "settings.delete": "Delete",
     "settings.priority": "Priority: {value}",

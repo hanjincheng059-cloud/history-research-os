@@ -1,15 +1,18 @@
 # evil-read-arxiv
 
-> 邪修的论文阅读工作流 - 自动化论文搜索、推荐、分析和整理
+> AI-native research workflow - 自动化文献搜索、推荐、分析、整理与 Obsidian 知识沉淀
 
 ## 语言 / Language
 
 - [中文版](README.md)
 - [English Version](README_en.md)
+- [历史学方向 / History Research Mode](README.history.md)
 
 ## 简介
 
-这是一套 Claude Code 技能（Skills）集合，用于自动化研究论文的搜索、推荐、分析和整理工作流。通过调用 arXiv 和 Semantic Scholar API，每天为你推荐高质量论文，并自动生成详细笔记和关系图谱。
+这是一套 Claude Code 技能（Skills）和 Next.js Web 应用，用于自动化研究文献的搜索、推荐、分析和整理工作流。它最初面向 arXiv/AI 论文阅读，现在也提供历史学与人文学科方向示例，适合把文献发现、AI 摘要、反馈偏好、Obsidian 笔记和知识图谱接成一个个人研究系统。
+
+历史学方向见 [README.history.md](README.history.md)：Built for historians, not just paper skimmers.
 
 ## 更新日志
 
@@ -20,6 +23,12 @@
 | 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、extract-paper-images 图片提取、paper-search 论文搜索 |
 
 ## 功能特点
+
+### 0. 历史学 / 人文学科研究模式
+- 提供 `config.history.example.yaml`，支持清代广州贸易、全球物质文化史、中西交流、数字人文等方向示例
+- 支持 `semantic_scholar_only: true` 的非 arXiv 检索配置
+- 推荐使用史学笔记字段：核心问题、主要论点、证据与材料、史学位置、与我的研究关系、下一步
+- 适合与 Obsidian source note / argument memo / graph workflow 结合
 
 ### 1. start-my-day - 每日论文推荐
 - 从 arXiv 搜索最近一个月的论文
@@ -84,6 +93,17 @@
    pip install -r requirements.txt
    ```
 
+## 开源与隐私说明
+
+本仓库默认不跟踪个人配置和运行数据：
+
+- `config.yaml`：你的真实研究方向、Vault 路径和本地配置
+- `data/api_settings.json`：API Key 和模型配置
+- `data/feedback.json` / `data/preferences.json`：你的阅读反馈与偏好画像
+- `data/papers_cache/` / `data/analysis_cache/` / `data/paper_images/`：运行时缓存
+
+公开分享时请只提交 `config.example.yaml`、`config.history.example.yaml` 和 `data/api_settings.example.json` 这类模板文件。
+
 ### 安装步骤
 
 #### 方式一：CLI 技能安装
@@ -119,6 +139,8 @@ npm install
 # 3. 配置研究兴趣（项目根目录）
 cd ..
 cp config.example.yaml config.yaml
+# 或历史学/人文学科方向：
+# cp config.history.example.yaml config.yaml
 # 编辑 config.yaml，填入你的研究领域和关键词
 
 # 4. 配置 API Key（三选一，按优先级排序）
@@ -128,7 +150,13 @@ cp config.example.yaml config.yaml
 
 **方式 A：`data/api_settings.json`（推荐）**
 
-在项目根目录创建 `data/api_settings.json`：
+复制示例文件并填入自己的 API Key：
+
+```bash
+cp data/api_settings.example.json data/api_settings.json
+```
+
+`data/api_settings.json`：
 
 ```json
 {
@@ -150,11 +178,7 @@ ANTHROPIC_API_KEY=sk-ant-your-key
 ANTHROPIC_BASE_URL=https://api.anthropic.com
 ```
 
-**方式 C：直接修改源码**（不推荐在公开仓库使用）
-
-修改 `web/src/lib/anthropic.ts` 中的 `DEFAULT_API_KEY` 和 `DEFAULT_BASE_URL` 常量。
-
-> 优先级：`data/api_settings.json` > 环境变量 > 代码默认值
+> 优先级：`data/api_settings.json` > 环境变量 > 代码默认值。公开仓库不要提交自己的 `data/api_settings.json`。
 
 ```bash
 # 5. 启动 Web 应用

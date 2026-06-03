@@ -1,6 +1,6 @@
 # evil-read-arxiv Web
 
-基于 Next.js 的 arXiv 每日论文推荐应用，集成 AI 摘要、深度分析和偏好学习。
+基于 Next.js 的每日文献推荐应用，集成 AI 摘要、深度分析和偏好学习。它最初面向 arXiv 论文，也可配合项目根目录的 `config.history.example.yaml` 用于历史学/人文学科文献发现。
 
 ## 技术栈
 
@@ -49,7 +49,13 @@ npm install
 
 **方式 A：`data/api_settings.json`（推荐）**
 
-在项目根目录创建 `data/api_settings.json`：
+复制示例文件并填入自己的 API Key：
+
+```bash
+cp data/api_settings.example.json data/api_settings.json
+```
+
+`data/api_settings.json`：
 
 ```json
 {
@@ -71,11 +77,7 @@ ANTHROPIC_API_KEY=sk-ant-your-key
 ANTHROPIC_BASE_URL=https://api.anthropic.com
 ```
 
-**方式 C：直接修改 `src/lib/anthropic.ts`**
-
-修改源码中的 `DEFAULT_API_KEY` 和 `DEFAULT_BASE_URL` 常量（不推荐在公开仓库使用）。
-
-优先级：`data/api_settings.json` > 环境变量 > 代码默认值。
+优先级：`data/api_settings.json` > 环境变量 > 代码默认值。公开仓库不要提交自己的 `data/api_settings.json`。
 
 ### 3. 配置研究兴趣
 
@@ -83,6 +85,8 @@ ANTHROPIC_BASE_URL=https://api.anthropic.com
 
 ```bash
 cp config.example.yaml config.yaml
+# 或历史学/人文学科方向：
+# cp config.history.example.yaml config.yaml
 ```
 
 编辑 `config.yaml`，定义你的研究领域、关键词和 arXiv 分类。应用也会根据你的搜索自动发现新领域。

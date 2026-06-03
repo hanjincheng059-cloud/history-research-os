@@ -1,3 +1,31 @@
 .claude/
 __pycache__/
 *.pyc
+
+# Local/private configuration
+config.yaml
+*.local
+.env
+.env.*
+!.env.example
+
+# Runtime data and personal preference state
+data/*
+!data/.gitkeep
+!data/*.example.json
+
+# Generated caches and paper assets
+**/papers_cache/
+**/analysis_cache/
+**/paper_images/
+**/PDFs/
+
+# Frontend local environment
+web/.env
+web/.env.*
+!web/.env.example
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/

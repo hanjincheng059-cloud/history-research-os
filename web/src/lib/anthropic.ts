@@ -2,8 +2,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { promises as fs } from "fs";
 import path from "path";
 
-const DEFAULT_API_KEY = "YOUR_API_KEY";
-const DEFAULT_BASE_URL = "YOUR_BASE_URL";
+const DEFAULT_API_KEY = "";
+const DEFAULT_BASE_URL = "https://api.anthropic.com";
 const DEFAULT_MODEL = "claude-sonnet-4-6";
 
 const SETTINGS_PATH = path.join(process.cwd(), "..", "data", "api_settings.json");
@@ -52,8 +52,17 @@ function resolveToken(): { token: string; baseURL: string } {
   return { token, baseURL };
 }
 
+function assertToken(token: string) {
+  if (!token || token === "YOUR_API_KEY") {
+    throw new Error(
+      "Anthropic API key is not configured. Set data/api_settings.json or ANTHROPIC_API_KEY."
+    );
+  }
+}
+
 export function createAnthropicClient(): Anthropic {
   const { token, baseURL } = resolveToken();
+  assertToken(token);
 
   // Standard Anthropic keys use x-api-key header
   if (token.startsWith("sk-ant-")) {
@@ -86,6 +95,7 @@ export async function createAnthropicClientWithSettings(): Promise<{
     DEFAULT_BASE_URL;
 
   const model = settings.model || DEFAULT_MODEL;
+  assertToken(token);
 
   let client: Anthropic;
   if (token.startsWith("sk-ant-")) {

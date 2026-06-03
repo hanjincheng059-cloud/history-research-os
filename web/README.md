@@ -1,6 +1,6 @@
 # evil-read-arxiv Web
 
-A Next.js web app for daily arXiv paper recommendations with AI-powered summaries, deep analysis, and preference learning.
+A Next.js web app for daily literature recommendations with AI-powered summaries, deep analysis, and preference learning. It started as an arXiv reader and can also be used with the root `config.history.example.yaml` for history/humanities research discovery.
 
 ## Tech Stack
 
@@ -49,7 +49,13 @@ You need to provide your own Anthropic API key. There are three ways (in priorit
 
 **Option A: `data/api_settings.json` (Recommended)**
 
-Create `data/api_settings.json` at the project root:
+Copy the example file and add your own API key:
+
+```bash
+cp data/api_settings.example.json data/api_settings.json
+```
+
+`data/api_settings.json`:
 
 ```json
 {
@@ -71,11 +77,7 @@ ANTHROPIC_API_KEY=sk-ant-your-key
 ANTHROPIC_BASE_URL=https://api.anthropic.com
 ```
 
-**Option C: Edit `src/lib/anthropic.ts` directly**
-
-Set `DEFAULT_API_KEY` and `DEFAULT_BASE_URL` constants in the source code (not recommended for public repos).
-
-Priority: `data/api_settings.json` > Environment variables > Code defaults.
+Priority: `data/api_settings.json` > environment variables > code defaults. Do not commit your private `data/api_settings.json`.
 
 ### 3. Configure Research Interests
 
@@ -83,6 +85,8 @@ Copy the example config at the project root:
 
 ```bash
 cp config.example.yaml config.yaml
+# Or for history/humanities:
+# cp config.history.example.yaml config.yaml
 ```
 
 Edit `config.yaml` to define your research domains, keywords, and arXiv categories. The app also auto-discovers new domains from your searches.
