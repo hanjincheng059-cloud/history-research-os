@@ -18,6 +18,7 @@
 
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
+| 2026-06-12 | v2.1 | 新增 `qing-trade-microhistory` 技能：清代貿易微歷史論文流水線（7階段全自動：史料搜索→引文檢查→格式匹配→同行評審→修訂→精簡→最終DOCX），5審稿人模擬同行評審 |
 | 2026-04-24 | v2.0 | 新增 Web 应用：基于 Next.js 16 的论文推荐网页端，支持 AI 智能摘要、深度分析、论文图片提取、反馈偏好学习、收藏夹管理、中英双语切换、桌面/移动端多端适配 |
 | 2026-03-13 | v1.1 | 新增 `conf-papers` 技能：支持搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文，基于 DBLP + Semantic Scholar 双数据源，独立配置文件，三维评分推荐 |
 | 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、extract-paper-images 图片提取、paper-search 论文搜索 |
@@ -29,6 +30,12 @@
 - 支持 `semantic_scholar_only: true` 的非 arXiv 检索配置
 - 推荐使用史学笔记字段：核心问题、主要论点、证据与材料、史学位置、与我的研究关系、下一步
 - 适合与 Obsidian source note / argument memo / graph workflow 结合
+
+### 🆕 清代貿易微歷史論文流水線 (qing-trade-microhistory)
+- **7階段全自動管線**：MD草稿 → 史料搜索 → 引文檢查 → 格式匹配 → 模擬同行評審（5審稿人） → 結構化修訂 → 精簡 → 最終DOCX
+- 專門針對清代廣州貿易、全球商品史、物質文化史中文論文
+- 基於 Appadurai/Kopytoff "物的社會生命"框架
+- 見 [qing-trade-microhistory/](qing-trade-microhistory/) 目錄
 
 ### 1. start-my-day - 每日论文推荐
 - 从 arXiv 搜索最近一个月的论文
@@ -361,6 +368,21 @@ evil-read-arxiv/
 │   ├── conf-papers.yaml      # 独立配置（关键词、会议、年份）
 │   └── scripts/
 │       └── search_conf_papers.py  # DBLP搜索 + S2补充 + 评分
+├── qing-trade-microhistory/  # 🆕 清代贸易微历史论文流水线
+│   ├── README.md             # 英文文档
+│   ├── README_zh.md          # 中文文档
+│   ├── SKILL.md              # Claude Code 技能定义
+│   ├── run_pipeline.py       # 全自动管線運行器
+│   ├── config.example.yaml   # 配置示例
+│   ├── scripts/              # Python 腳本
+│   │   ├── stage1_source_search.py
+│   │   ├── stage2_citation_check.py
+│   │   ├── stage3_format_match.py
+│   │   ├── stage6_streamline.py
+│   │   └── stage7_final_polish.py
+│   └── prompts/              # AI 提示詞
+│       ├── reviewer_personas.md
+│       └── revision_protocol.md
 └── web/                      # Web 应用（Next.js 16）
     ├── README.md             # Web 英文文档
     ├── README.zh.md          # Web 中文文档

@@ -1,0 +1,110 @@
+# Qing Trade Microhistory — Configuration
+
+# Paper metadata
+title: "清中前期中國與瑞典貿易研究——以廣州口岸與瑞典東印度公司為中心（1732-1813）"
+author: ""
+language: "zh-TW"
+
+# Paths (relative to working directory)
+working_paper: "paper.md"          # Your MD draft
+source_archives: "./archives"      # Folder with DOCX/TXT/MD historical sources
+reference_paper: ""                # Published paper to match formatting
+
+# Keyword categories for Stage 1 (DOCX source search)
+research_domains:
+  "清代廣州貿易":
+    keywords:
+      - "廣州"
+      - "Canton"
+      - "十三行"
+      - "粵海關"
+      - "行商"
+      - "hong merchant"
+      - "Canton system"
+      - "一口通商"
+    priority: 5
+
+  "瑞典東印度公司":
+    keywords:
+      - "瑞典東印度公司"
+      - "SOIC"
+      - "Svenska Ostindiska"
+      - "哥德堡"
+      - "Götheborg"
+      - "Gothenburg"
+      - "riksarkivet"
+    priority: 5
+
+  "藥材與小宗商品":
+    keywords:
+      - "土茯苓"
+      - "China root"
+      - "大黃"
+      - "rhubarb"
+      - "良薑"
+      - "八角"
+      - "薑黃"
+      - "白鉛"
+      - "水銀"
+      - "明礬"
+      - "高良薑"
+    priority: 4
+
+  "白銀與金融":
+    keywords:
+      - "白銀"
+      - "silver"
+      - "piastre"
+      - "借銀"
+      - "西班牙銀元"
+      - "貿易差額"
+    priority: 4
+
+  "物質文化":
+    keywords:
+      - "瓷器"
+      - "porcelain"
+      - "扇子"
+      - "紙畫"
+      - "泥人物"
+      - "鐘表"
+      - "蓪草"
+      - "外銷畫"
+    priority: 3
+
+  "人物與商館":
+    keywords:
+      - "潘啟官"
+      - "陳"
+      - "蔡"
+      - "伍"
+      - "龍思泰"
+      - "Ljungstedt"
+      - "奧斯貝克"
+      - "坎貝爾"
+      - "Campbell"
+    priority: 3
+
+# Keywords to exclude from search results
+excluded_keywords:
+  - "workshop"
+  - "review"
+  - "survey"
+
+# Stage 2: Citation check settings
+citation:
+  bibliography_markers:
+    - "參考文獻"
+    - "参考文献"
+    - "Bibliography"
+  footnote_style: "markdown"  # or "docx"
+
+# Stage 6: Streamline settings
+streamline:
+  target_reduction: 0.12        # 12% word count reduction target
+  redundant_phrases:
+    - "換句話說"
+    - "也就是說"
+    - "更進一步說"
+    - "總而言之"
+    - "綜上所述"
